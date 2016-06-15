@@ -9,7 +9,7 @@ In the meetup, ask what OS the participants will be using.
 
 ## Content
 
-I. Intro to Conda (1 hr +15mins margin for Qs)
+1. Intro to Conda (1 hr +15mins margin for Qs)
     * Motivation: why environments and conda
     * conda & conda env or virtual env & pip
     * Anaconda Python Distribution
@@ -20,12 +20,12 @@ I. Intro to Conda (1 hr +15mins margin for Qs)
             * Environment files
         * Examples and documentation
 
-II. Conda recipes (30 mins +15mins margin for Qs)
+2. Conda recipes (30 mins +15mins margin for Qs)
     * [Example recipe](https://github.com/sandhujasmine/CythonExample)
     * [Anaconda cloud](anaconda.org)
     * Develop in conda environment: illustrate how well binary dependencies are handled
 
-III. Advanced topics (2 hours)
+3. Advanced topics (2 hours)
     * conda-forge (30 mins +15mins margin for Qs)
         * community driven and supported conda recipes/packages
 
