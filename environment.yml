@@ -1,0 +1,14 @@
+name: conda_wkshp
+dependencies:
+ - python=3.5
+ - jupyter
+ - numpy
+ - matplotlib
+ - scipy
+ - scikit-learn
+ - cython
+ - line_profiler
+ - netcdf4
+ - pandas
+ - pip:
+   - graphviz
