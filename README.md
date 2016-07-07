@@ -19,11 +19,13 @@ In the meetup, ask what OS the participants will be using.
             * Managing environments
             * Environment files
         * Examples and documentation
+
    __10 min Break__
 
 2. Conda recipes (30 mins)
     * [Example recipe](https://github.com/sandhujasmine/CythonExample)
     * [Anaconda cloud](anaconda.org)
+
    __30 min Break__
 
 3. Advanced topics (1 hours +15mins Qs)
