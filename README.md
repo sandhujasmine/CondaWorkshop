@@ -30,9 +30,11 @@ __10 min Break__
 __30 min Break__
 
 3. Advanced topics (1 hours +15mins Qs)
+
+    * maintaining your own anaconda channel
+
     * conda-forge (30 mins)
         * community driven and supported conda recipes/packages
 
     * anaconda-cluster (30 mins)
         * manage environments with anaconda cluster
-
