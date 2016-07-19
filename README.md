@@ -24,7 +24,7 @@ In the meetup, ask what OS the participants will be using.
 
 2. Conda recipes (30 mins)
     * [Example recipe](https://github.com/sandhujasmine/CythonExample)
-    * [Anaconda cloud](anaconda.org)
+    * [Anaconda cloud](https://anaconda.org)
 
    __30 min Break__
 
