@@ -1,9 +1,9 @@
-## SciPyLA 2016 presentations
+## PuPPY Conda Workshop -- Seattle, WA July 2016
 ### conda-forge
 
 Rendered versions:
 
-http://ocefpaf.github.io/SciPyLA_2016_talk/
+http://sandhujasmine.github.io/CondaWorkshop
 
 Use the Makefile to create and manage the slides:
 

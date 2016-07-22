@@ -28,9 +28,7 @@ In the meetup, ask what OS the participants will be using.
 
    __30 min Break__
 
-3. Advanced topics (1 hours +15mins Qs)
-
-    * maintaining your own anaconda channel
+3. Advanced topics (1 hours + 15mins Qs)
 
     * conda-forge (30 mins)
         * community driven and supported conda recipes/packages

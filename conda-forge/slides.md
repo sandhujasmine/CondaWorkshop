@@ -9,7 +9,7 @@
 - [Chris Barker](https://github.com/pythonCHB)
 
 - Work for [NOAA](http://response.restoration.noaa.gov)
-- Managing a [complex project(s) with lots of ugly dependencies:](https://github.com/NOAA-ORR-ERD)
+- Managing a [complex project(s) with lots of ugly dependencies:](https://github.com/NOAA-ORR-ERD/PyGnome/blob/master/conda_requirements.txt)
 - Maintaining a anaconda [channel with our dependencies](https://anaconda.org/noaa-orr-erd)
 
 - I learned a lot from: [Filipe Fernandes](https://github.com/ocefpaf)
@@ -33,7 +33,8 @@ And one from the conda forge community:
 # The problem
 
 The Python scientific community always wanted a package manager that is cross platform,
-does not require sudo, and let's Python be awesome.
+does not require sudo, and lets Python be awesome.
+
 The conda package manager solved that problem, but created a new ones.
 
 . . .
@@ -42,11 +43,11 @@ The conda package manager solved that problem, but created a new ones.
 > - If I build my own binaries where should I host them?
 > - How should I build them to ensure they are compatible with other systems and the default channel?
 
-# more about the problem
+# More about the problem
 
 The `defaults` cannot keep up with the pace of the scientific community and many users/communities channels were created to fill in that gap.
-That led to duplication of effort, recipe fragmentation,
-unstable environments when mixing and matching packages from different channels, etc.
+
+That led to duplication of effort, recipe fragmentation, unstable environments when mixing and matching packages from different channels, etc.
 
 # Let's take a step back: what is a conda channel?
 
@@ -54,9 +55,12 @@ unstable environments when mixing and matching packages from different channels,
 > - The service is hosted for free at Continuum's Anaconda Cloud (https://anaconda.org)
 > - We can upload pre-compiled binaries using the `conda` package manager
 
-# Well... What is a conda?
+# We've already covered conda ...
+
+But here's a reminder:
 
 > - An open-source packaging system developed for, and used by, the scientific software community.
+> - Also useful for everyone else!
 > - From their own webpage:
 > - "Package Everything!"
 > - "And share your repositories with clients or colleagues."
@@ -66,7 +70,7 @@ unstable environments when mixing and matching packages from different channels,
 
 > - Reproducible environments are easy to create
 > - Better solution than wheels for Python packages that depend on external libraries
-> - One recipe for multiple platforms (no `apt-get`, `yum`, `brew`, etc)
+> - One approach for multiple platforms (no `apt-get`, `yum`, `brew`, etc)
 
 . . .
 
@@ -85,16 +89,16 @@ it is a system that brings features and utilities for the broader developer comm
 
 # What do we mean by community?
 
-Having a community-governed package channel for conda and a community process for submitting, verifying, and storing ~~signed~~ project releases
+Having a community-governed package channel for conda and a community process for submitting, verifying, and storing *signed* project releases
 
 [https://conda-forge.github.io/](https://conda-forge.github.io/)
 
 # The conda-forge [channel](http://anaconda.org/conda-forge)
 
-> - 70 contributors
-> - 504 packages
+> - over 70 contributors
+> - 866 packages
 > - Available platforms are: Linux-64, Windows-32/64, and OS X
-> - You can install with `conda install -c conda-forge gdal`
+> - You can install with `conda install -c conda-forge a_package`
 
 # Builds
 
@@ -123,17 +127,27 @@ Having a community-governed package channel for conda and a community process fo
 ```bash
 conda config --add channels conda-forge
 
-curl -L http://bit.ly/tutorial -o environment.yml
-
 conda env create environment.yml
+```
+
+or
+
+```bash
+conda install something
+```
+
+or, if you don't want the channel to be there by default:
+
+```bash
+conda install -c conda-forge something
 ```
 
 . . .
 
-That is it!
+**That is it!**
 
 
-# The tutorial environment file
+# An Example Environment File
 
 ```yaml
 name: geopython
@@ -143,7 +157,7 @@ dependencies:
     - python=2.7
     - jupyter
     - matplotlib
-    .
+    - gdal
     .
     .
 ```
@@ -153,17 +167,24 @@ dependencies:
 > - Report problems
 > - Request packages or new releases
 > - Send PRs adding/fixing packages
+> - Submit your own packge to manage
 
 . . .
 
-# Submitting a new recipe
+All with the gitHub "workflow"
 
-> - Fork [https://github.com/conda-forge/staged-recipes](https://github.com/conda-forge/staged-recipes)
-> - Submit the PR
-> - The recipe will be built and, once merged, it will trigger the creation of the feedstock repository
-> - In the feedstock repo, the recipe will be re-built and uploaded to the conda-forge channel on anaconda.org
+
+# Submitting a New Recipe
+
+1. Fork [https://github.com/conda-forge/staged-recipes](https://github.com/conda-forge/staged-recipes)
+2. Create a branch for your recipe (you only want one recipe per PR)
+3. Submit the PR -- The recipe will be built and, once merged, it will trigger the creation of the feedstock repository
+4. In the feedstock repo, the recipe will be re-built and uploaded to the conda-forge channel on anaconda.org
+
+You will then be a maintainer of that recipe -- and can update, etc. without any intervention by the core maintainers.
 
 # Creating a [recipe](https://github.com/conda-forge/staged-recipes/tree/master/recipes/example)
+
 ```yaml
 {% set version = "1.0" %}
 
@@ -174,13 +195,11 @@ package:
 source:
   fn: example-{{ version }}.tar.gz
   url: https://pypi.python.org/example-{{ version }}.tar.gz
-  md5: 842b44f8c95517ed5b792081a2370da1
-  patches:
-    - some.patch
+  sha256: 842b44f8c95517ed5b792081a2370da1
 
 build:
   number: 0
-  script: script: pip install --no-deps .
+  script: pip install --no-deps ./
 
 requirements:
   build:
@@ -190,10 +209,12 @@ requirements:
     - python
 
 test:
+  requires:
+    - pytest
   imports:
     - example
   commands:
-    - example --version
+    - py.test --pyargs example
 
 about:
   home: https://example.com/examples/
@@ -202,7 +223,7 @@ about:
 
 extra:
   recipe-maintainers:
-    - GitHubHandle
+    - <GitHubHandle>
 
 ```
 
@@ -210,6 +231,12 @@ extra:
 
 > - `conda skeleton pypi <packages>`
 > - [Search](http://anaconda.org/search?q=gsw), download, copy, and paste
+> - Find a similar "feedstock" on conda-forge github and copy it.
+
+. . .
+
+Note: you may be better off working with [the conda-forge example recipe](https://github.com/conda-forge/staged-recipes/blob/master/recipes/example/meta.yaml)
+
 
 # Maintaining recipes in the feedstock
 
@@ -233,6 +260,7 @@ build:
   .
   .
 ```
+
 # Maintenance example part 0: the PR
 
 ![](images/github_maintaince.png)
