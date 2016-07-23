@@ -23,19 +23,20 @@ In the meetup, ask what OS the participants will be using.
             * Environment files
         * Examples and documentation
 
-__10 min Break__
+   __10 min Break__
 
 2. Conda recipes (30 mins)
     * [Example recipe](https://github.com/sandhujasmine/CythonExample)
-    * [Anaconda cloud](anaconda.org)
-    * Develop in conda environment: illustrate how well binary dependencies are handled
+    * [Anaconda cloud](https://anaconda.org)
 
-__30 min Break__
+   __30 min Break__
 
-3. Advanced topics (1 hours +15mins Qs)
+3. Advanced topics (1 hours + 15mins Qs)
+
     * conda-forge (30 mins)
         * community driven and supported conda recipes/packages
 
     * anaconda-cluster (30 mins)
         * manage environments with anaconda cluster
 
+   * Develop in conda environment: illustrate how well binary dependencies are handled
