@@ -282,6 +282,33 @@ build:
 
 [Mailing list](https://groups.google.com/forum/#!forum/conda-forge)
 
+# Other tools from conda-forge
+
+Conda-forge is really two things:
+
+ - a community-maintained repository of conda packages
+ - a set of tools that faciliate building conda pacakges
+
+Some of those tools are useful on there own.
+
+## `conda-build-all`
+
+`conda-build all`: https://github.com/SciTools/conda-build-all
+
+is a add-on for conda that facilitates the building of multiple conda packages accross a "matrix" of python and numpy versions.
+
+with one command, you can build an entire set of packages, and upload them to your own anaconda.org channel:
+
+```
+$ conda-build-all my_recipes --matrix-condition "python 3.5.*" "numpy >=1.8"
+```
+
+This is very useful for providing a custom channel of pacakges for your project:
+
+https://github.com/NOAA-ORR-ERD/orr-conda-recipes
+
+
+
 
 # Questions?
 
