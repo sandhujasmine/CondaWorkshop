@@ -1,5 +1,8 @@
 # CondaWorkshop
 
+__Download Miniconda 3.x for your system__: http://conda.pydata.org/miniconda.html
+
+
 Here is basic outline for PuPPy's Anaconda workshop. It'll be hands on so we'll work through installing conda, setting up environments and get a feel for conda usage.
 
 In the meetup, ask what OS the participants will be using.
