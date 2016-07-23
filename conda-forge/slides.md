@@ -289,9 +289,9 @@ Conda-forge is really two things:
  - a community-maintained repository of conda packages
  - a set of tools that faciliate building conda pacakges
 
-Some of those tools are useful on there own.
+Some of those tools are useful on their own.
 
-## `conda-build-all`
+# `conda-build-all`
 
 `conda-build all`: https://github.com/SciTools/conda-build-all
 
@@ -303,12 +303,44 @@ with one command, you can build an entire set of packages, and upload them to yo
 $ conda-build-all my_recipes --matrix-condition "python 3.5.*" "numpy >=1.8"
 ```
 
-This is very useful for providing a custom channel of pacakges for your project:
+This is very useful for providing a custom channel of packages for your project:
 
 https://github.com/NOAA-ORR-ERD/orr-conda-recipes
 
+# conda-execute
+
+A tool for executing scripts in a defined temporary environment.
+
+`conda-execute` provides one command that will start up a conda environment, and then run a script in that environment.
+
+This lets you have different scripts on your system with different requirements: py2 and py3, various complex dependencies, etc.
+
+Instaling:
+
+```
+conda install conda-execute --channel=conda-forge`
+```
+
+running a script:
+
+```
+conda execute -v my_script.py
+```
+
+# Keeping conda execute self contained:
+
+Put it in the shebang line, and specify the environment inside comments:
 
 
+```
+#!/usr/bin/env conda-execute
+
+# conda execute
+# env:
+#  - python >=3
+#  - numpy
+# run_with: python
+```
 
 # Questions?
 
